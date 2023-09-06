@@ -49,8 +49,8 @@ print('Derivada central')
 print_funcion(X,Y_df_central)
 
 #ERROR
-Error_derivada_progresiva = Y_df_progresivo - Y_df_real
-Error_derivada_central = Y_df_central - Y_df_real 
+Error_derivada_progresiva = np.abs((Y_df_progresivo - Y_df_real) * 100 /  Y_df_real)
+Error_derivada_central = np.abs(( Y_df_central - Y_df_real)  * 100 /  Y_df_real)
 
 #GRÁFICAS
 
