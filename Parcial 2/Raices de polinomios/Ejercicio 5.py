@@ -52,8 +52,8 @@ def GetLaguerre(x, n):
 def sympy_diff(x, fun):
     return sym.simplify(sym.diff(fun, x, 1))
 
-n=30
-#Cota dada en el taller 2
+n=20
+#Cota dada en el taller 2 de la clase complementaria
 b=n+(n-1)*np.sqrt(n)
 X= np.linspace(0,b, 600)
 poly = GetLaguerre(x, n)
