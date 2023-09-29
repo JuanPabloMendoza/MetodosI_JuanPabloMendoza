@@ -18,8 +18,10 @@ print(peso_1, peso_2)
 
 #d
 #La integral se puede realizar por metodo de integracion por partes. La funcion gamma de 4 (que corresponde a x elevado a la 3) da como resultado 3!=6
-f = x**3
+
 #por Gauss Laguerre:
-Int = peso_1*raices[0]**3 + peso_2*raices[1]**3
+#la funcion es x^3, es decir, se elevan las raices al cubo.
+fun  = sym.lambdify([x], x**3, 'numpy')
+Int = peso_1*fun(raices[0]) + peso_2*fun(raices[1])
 print(Int)
 print(f'Resolviendo esta expresion, encontramos que es 6')
