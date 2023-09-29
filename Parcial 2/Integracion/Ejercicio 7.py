@@ -7,9 +7,10 @@ def Integral_Doble(funcion, a, b, c, d, N, R):
     Y = np.linspace(c,d,N+1)
     
     def Promedio(funcion, Cuadrado, R):
-        #Revisar cómo generalizar para cualquier funcion
+        
         Suma = 0
         for Vertice in Cuadrado:
+            #Generalizacion para cualquier funcion
             if not np.isnan(funcion(Vertice[0], Vertice[1])):
                 Suma += funcion(Vertice[0], Vertice[1])
             """ if (Vertice[0]**2) + (Vertice[1]**2) < R**2:
@@ -31,6 +32,7 @@ def Semiesfera(x,y, R=1):
 
 def VolumenEsfera(R):
     return (4/3)*np.pi*R**3
+
 R=1
 Int = Integral_Doble(Semiesfera, -R, R, -R, R, 1000, R)
 Real = VolumenEsfera(R)/2

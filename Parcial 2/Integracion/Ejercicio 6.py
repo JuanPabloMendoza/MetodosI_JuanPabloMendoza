@@ -37,7 +37,7 @@ Integral_simpson = Integral_Simpson(funcion, -0.01, 0.01, 1000000)
 Integral_exacta = Integral_exacta_funcion()
 Error_trapecio = 100*(1-Integral_trapecio/Integral_exacta)
 Error_simpson = 100*(1-Integral_simpson/Integral_exacta)
-print(Error_trapecio, Error_simpson)
+print(f'Error Trapecio: {Error_trapecio}, \nError Simpson: {Error_simpson}')
 
 
     

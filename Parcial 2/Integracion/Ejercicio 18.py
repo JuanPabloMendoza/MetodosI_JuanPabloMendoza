@@ -6,7 +6,7 @@ y = sym.Symbol('y',real=True)
 
 #RAICES
 
-def GetNewton(f,df,xn,itmax=10000000,precision=1e-13):
+def GetNewton(f,df,xn,itmax=100000,precision=1e-12):
     
     error = 1.
     it = 0
@@ -116,7 +116,6 @@ def Integral_GH_rapida(funcion, n):
     def funcion_corregida(x):
         return funcion(x) * np.exp(x**2)
     raices,pesos = np.polynomial.hermite.hermgauss(n)
-    print(raices, pesos)
     suma = 0
     for i in range(n):
         suma += pesos[i] * funcion_corregida(raices[i])
@@ -127,8 +126,8 @@ n=20
 
 Poly, Roots, Weights = GetEverythingHermite(n)
 print(f'\nPolinomio de Hermite de grado {n}: {Poly}\n')
-print(f'\nRaices del polinomio de Hermite de grado {n}: {Roots}\n')
-print(f'\nPesos del polinomio de Hermite de grado {n}: {Weights}\n')
+print(f'Raices del polinomio de Hermite de grado {n}: {Roots}\n')
+print(f'Pesos del polinomio de Hermite de grado {n}: {Weights}\n')
 
 
 #b

@@ -1,5 +1,5 @@
 import numpy as np
-
+import matplotlib.pyplot as plt 
 
 def Integral_GL_corta(funcion, n):
     # Más rápida. Usa los pesos y raices dados por numpy
@@ -16,9 +16,26 @@ def f(x):
 
 
 
+Real = (np.pi**4)/15
+
+#a
+n=3
 Int = Integral_GL_corta(f, 3)
 print(Int)
-Real = (np.pi**4)/15
-print(Real)
-print(f'Accuracy = {Int/Real}')
+
+#b
+N=np.arange(2,11)
+Accuracy = np.zeros(9)
+print(N)
+for i in range(9):
+    Int = Integral_GL_corta(f, N[i])
+    Accuracy[i] = Int/Real
+
+plt.scatter(N, Accuracy, color = 'blue', label = 'Laguerre Quadrature Accuracy')
+plt.xlabel('n')
+plt.ylabel('Accuracy')
+plt.grid()
+plt.legend()
+plt.show()
+
 
