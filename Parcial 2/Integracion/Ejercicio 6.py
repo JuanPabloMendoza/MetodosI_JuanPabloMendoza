@@ -34,11 +34,9 @@ def Integral_exacta_funcion(R=0.5, a=0.01):
 
 Integral_trapecio = Integral_Trapecio(funcion, -0.01,0.01, 1000000)
 Integral_simpson = Integral_Simpson(funcion, -0.01, 0.01, 1000000)
+print(Integral_simpson)
 Integral_exacta = Integral_exacta_funcion()
 Error_trapecio = 100*(1-Integral_trapecio/Integral_exacta)
 Error_simpson = 100*(1-Integral_simpson/Integral_exacta)
 print(f'Error Trapecio: {Error_trapecio}, \nError Simpson: {Error_simpson}')
 
-
-    
-        
