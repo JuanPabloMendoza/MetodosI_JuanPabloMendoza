@@ -42,9 +42,27 @@ def comportamiento(R,phi):
             Int = -k*Doble_Integral_Legendre(Fun(Posicion), 0, 2*np.pi, 0, 1, 50)
             g = np.append(g, Int)
         plt.plot(phi, g, label = f'R = {r}')
+        plt.xlabel('phi[rad]')
+        plt.ylabel('g[m/s2]')
         plt.legend()
     plt.show()
 
 comportamiento(R,phi)
-        
-        
+
+
+#No depende del angulo porque la distribucion de masa en el disco es uniforme. Esto se evidencia en el comportamiento azimutal mostrado en el grafico.
+R=0.5
+phi = 0
+x=0.5
+y=0
+z=0.2
+print(f'En el ecuador (R=0.5), la gravedad es {-k*Doble_Integral_Legendre(Fun([x,y,z]), 0, 2*np.pi, 0, 1, 50)}')
+
+R=1
+phi = 0
+x=1
+y=0
+z=0.2
+print(f'En el borde, si hubiera, (R=1), la gravedad es {-k*Doble_Integral_Legendre(Fun([x,y,z]), 0, 2*np.pi, 0, 1, 50)}')
+
+#Encontramos en el borde que la gravedad varia, a la misma altura, sin embargo la evidencia empirica indica que eso no es lo que ocurre. la gravedad 
