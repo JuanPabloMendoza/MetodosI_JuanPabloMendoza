@@ -13,8 +13,9 @@ print(raices)
 
 #c
 peso_1 = sym.integrate(sym.exp(-x)*(x-raices[1])/(raices[0]-raices[1]), (x,0,sym.oo))
-peso_2 = sym.integrate(sym.exp(-x)*(x-raices[0])/(raices[0]-raices[1]), (x,0,sym.oo))
+peso_2 = sym.integrate(sym.exp(-x)*(x-raices[0])/(raices[1]-raices[0]), (x,0,sym.oo))
 print(peso_1, peso_2)
+
 
 #d
 #La integral se puede realizar por metodo de integracion por partes. La funcion gamma de 4 (que corresponde a x elevado a la 3) da como resultado 3!=6
@@ -24,4 +25,5 @@ print(peso_1, peso_2)
 fun  = sym.lambdify([x], x**3, 'numpy')
 Int = peso_1*fun(raices[0]) + peso_2*fun(raices[1])
 print(Int)
-print(f'Resolviendo esta expresion, encontramos que es 6')
+Int = sym.simplify(Int)
+print(f'Resolviendo esta expresion, encontramos que es {Int}')
