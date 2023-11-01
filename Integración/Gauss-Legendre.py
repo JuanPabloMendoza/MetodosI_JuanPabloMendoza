@@ -67,5 +67,18 @@ def Centro_de_masa(densidad, a, b, c, d, n):
     return Xm, Ym
 
 print(Centro_de_masa(Densidad, a=1, b=3, c=1, d=4, n=7))
+
+
+def fun(x,y):
+    return x
+
+print(Doble_Integral_Legendre(fun, 0, 1, 0, 4, 15))
+
+
+
+
+
+
+
     
     
