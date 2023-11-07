@@ -31,17 +31,16 @@ def Jacobi(A,b,x0, itmax=1000, tolerancia=1e-9):
         residuo_norma_inf = np.max(np.abs(np.dot(A,x)-b))
         residuo = np.linalg.norm(np.dot(A,x)-b)
         
-        print(residuo)
         it+=1
         
         if residuo > 1000:
             print('No calculable con Jacobi')
             x[:] = 0.
             break
-    print(it)
     return x
 
 print(Jacobi(A,b,np.array([0.,0.,0.])))
+print(A,b)
 
 def GetT(A):
     D = np.zeros_like(A)

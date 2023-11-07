@@ -17,10 +17,10 @@ x0, y0 = 0.5,0.1
 Gradient = lambda f,x,y: np.array([Dx(f,x,y),Dy(f,x,y)])
 Gradient(f2,x0,y0)
 
-def Minimizer(f, N = 100, gamma = 0.01):
+def Minimizer(f,seed, N = 100, gamma = 0.01):
     
     r = np.zeros((N,2))
-    r[0] = np.random.uniform(-5.,5.,size=2)
+    r[0] = seed
     
     Grad = np.zeros((N,2))
     Grad[0] = Gradient(f,r[0,0],r[0,1])
@@ -35,7 +35,8 @@ def Minimizer(f, N = 100, gamma = 0.01):
     return r,Grad
 
 N = 200
-r,Grad = Minimizer(f2,N)
+seed =np.array([0.,3.],dtype='float64')
+r,Grad = Minimizer(f2,seed,N)
 
 fig = plt.figure(figsize=(8,3))
 ax = fig.add_subplot(1,2,1, projection = '3d',elev = 50, azim = -70)
@@ -68,7 +69,7 @@ def Update(i):
 
 
 Animation = animation.FuncAnimation(fig, Update, frames=N,init_func=init)
-
+filename='/Users/juanpablomendozaarias/Library/Mobile Documents/com~apple~CloudDocs/Universidad/Tercer Semestre/Métodos Computacionales/MetodosI_JuanPabloMendoza/Parcial 3/Aprendizaje Automático/Gradient2D.mp4'
 Writer = animation.writers['ffmpeg']
 writer = Writer(fps=5, metadata=dict(artist='Me'), bitrate=1800 )
-Animation.save( 'Gradient2D.mp4', writer=writer )
+Animation.save( filename, writer=writer )

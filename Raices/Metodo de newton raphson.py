@@ -7,6 +7,9 @@ def Function(x):
 
 def Function2(x):
     return 0.5*((5*x**3)-3*x)
+
+def Function3(x):
+    return x**3 - x**2 -1
 def derivada_central(funcion, x, h):
     derivada_x = ((funcion(x+h)-funcion(x-h))/(2*h))
     return derivada_x
@@ -31,7 +34,7 @@ def GetNewtonMethod(f,df,xn,itmax=100000,precision=1e-5):
 N=20
 root = GetNewtonMethod(Function, derivada_central, 0)
 roots = np.empty(N)
-x= np.linspace(-1,1, 20)
+x= np.linspace(-1,1, 200)
 
 def roots_each_x(x, newtonmethod, f, df, roots):
     for i in range(N):
@@ -39,12 +42,12 @@ def roots_each_x(x, newtonmethod, f, df, roots):
         root = newtonmethod(f, df, x_)
         roots[i] = root 
         
-roots_each_x(x, GetNewtonMethod, Function2, derivada_central, roots)
+roots_each_x(x, GetNewtonMethod, Function3, derivada_central, roots)
 print(roots)
 
 real_roots = []
 root_i = roots[0]
-e=0.001
+e=0.00001
 for i in range(roots.size):
     difference = root_i-roots[i]
     if not np.abs(difference)<e:

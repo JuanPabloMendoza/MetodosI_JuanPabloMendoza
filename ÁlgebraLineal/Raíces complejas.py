@@ -1,6 +1,7 @@
 import numpy as np
 import sympy as sym
 
+
 x = sym.Symbol('x',real=True)
 y = sym.Symbol('y',real=True)
 
@@ -27,7 +28,7 @@ def Jn(f,r,h=1e-6):
 def f(x,y):
     
     z = x+sym.I*y
-    f = z**2 + 1
+    f = z**3 + 1
     f = f.expand()
     return sym.re(f), sym.im(f)
 
@@ -44,13 +45,12 @@ for i in range(2):
         else:
             J[i,j] = sym.diff(F[i],y,1)
             
-InvJ = J.inv(method='LU')
+InvJ = J.inv()
 print(InvJ)
 
 Fn = sym.lambdify([x,y],F,'numpy')
 IJn = sym.lambdify([x,y],InvJ,'numpy')
 
-print(IJn(1.,1.))
 
 def NewtonRaphson(z,Fn,Jn,itmax=100,precision=1e-9):
     
@@ -71,4 +71,4 @@ def NewtonRaphson(z,Fn,Jn,itmax=100,precision=1e-9):
         
     print(it)
     return z
-print(NewtonRaphson([1,1], Fn, IJn))
+print(NewtonRaphson([0.5,0.5], Fn, IJn))
