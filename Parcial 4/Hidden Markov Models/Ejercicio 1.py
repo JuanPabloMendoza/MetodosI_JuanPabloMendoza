@@ -142,7 +142,7 @@ print(f'La suma de las probabilidades de cada secuencia observable es {np.round(
 HiddenStates, P, M = GetHiddenStatesInfo(HStates, Obs.size, Obs, T,E,Prior, DictO,False)
 Prior2 = np.array([0.5,0.5])
 HiddenStates2, P2, M2 = GetHiddenStatesInfo(HStates, Obs.size, Obs, T,E,Prior2, DictO,False)
-print(f'Suponga el estado observado: {GetS(HiddenStates[M],DictH)}')
+print(f'd: Suponga el estado observado: {GetS(HiddenStates[M],DictH)}')
 print(f'Vea que para un prior de {Prior}, la secuencia oculta de monedas más probable es: \n{GetS(HiddenStates[M],DictH)} y su probabilidad es de {np.round(P[M],8)}')
 print(f'Pero para un prior distinto, por ejemplo, prior={Prior2}, la secuencia oculta de monedas más probable es: \n{GetS(HiddenStates2[M2],DictH)} y su probabilidad es de {np.round(P2[M2],8)}')
 print(f'Luego los resultados si dependen de la probabilidad a priori.')

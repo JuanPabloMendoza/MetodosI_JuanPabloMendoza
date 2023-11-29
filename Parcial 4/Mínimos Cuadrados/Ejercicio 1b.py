@@ -45,3 +45,4 @@ ax.legend()
 plt.show()
 
 print(f'Punto encontrado: [{MinX},{MinY}]. Distancia = {MinDist}')
+print(f'Resultado por mínimos cuadrados (tomado de la clase): {[1.42857143, 0.42857143]}. Distancia = {2.53546}')

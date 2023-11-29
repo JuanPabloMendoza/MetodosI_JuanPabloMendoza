@@ -31,3 +31,4 @@ for exp in Sample:
         
 Prob = fr/N
 print(f'La probabilidad de obtener {C} caras y {S} sellos al lanzar {nmonedas} monedas es: {np.round(Prob*100,3)}%')
+#con N=1e6 da casi exacto.
