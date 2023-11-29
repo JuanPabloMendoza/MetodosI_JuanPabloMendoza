@@ -19,6 +19,19 @@ def GetStates(States,N):
                 
     return np.array(Permu)
 
+def GetProbObs(T,State,Prior):
+    
+    n = len(State)
+    p = 1.
+    
+    p *= Prior[State[0]]
+    
+    # Matriz de transicion
+    for i in range(n-1):
+        p *= T[ State[i+1], State[i]  ]
+        
+    return p
+
 def GetProb(T,E,Obs,State,Prior):
     
     n = len(Obs)
@@ -104,6 +117,8 @@ J=0
 B=1
 OStates = np.array([C,S])
 HStates = np.array([J,B])
+
+#a
 Prior = np.array([0.2,0.8])
 
 DictH = {0:'Justa',1:'Sesgada'} 
@@ -116,8 +131,9 @@ HiddenStates, P, M = GetHiddenStatesInfo(HStates, Obs.size, Obs, T,E,Prior, Dict
 print(f'b: La secuencia oculta de monedas más probable para el estado observado {GetS(Obs,DictO)} es: \n{GetS(HiddenStates[M],DictH)} y su probabilidad es de {np.round(P[M],8)}')
 
 #c
-ObsStates, PObs, M = GetObsStatesInfo(OStates, HStates, 8, T, E, Prior)
-print(f'c: Las probabilidades se encuentran en la gráfica. \nLa secuencia observable más probable es {GetS(ObsStates[M],DictH)}')
+N=8
+ObsStates, PObs, M = GetObsStatesInfo(OStates, HStates, N, T, E, Prior)
+print(f'c: Las probabilidades se encuentran en la gráfica. \nLa secuencia observable de {N} eventos más probable es {GetS(ObsStates[M],DictH)}')
 
 #d
 print(f'La suma de las probabilidades de cada secuencia observable es {np.round(np.sum(PObs),3)}')
@@ -126,6 +142,9 @@ print(f'La suma de las probabilidades de cada secuencia observable es {np.round(
 HiddenStates, P, M = GetHiddenStatesInfo(HStates, Obs.size, Obs, T,E,Prior, DictO,False)
 Prior2 = np.array([0.5,0.5])
 HiddenStates2, P2, M2 = GetHiddenStatesInfo(HStates, Obs.size, Obs, T,E,Prior2, DictO,False)
-print(f'Vea que para un prior de {Prior}, la secuencia oculta de monedas más probable para el estado observado {GetS(Obs,DictO)} es: \n{GetS(HiddenStates[M],DictH)} y su probabilidad es de {np.round(P[M],8)}')
-print(f'Pero para un prior distinto, por ejemplo, prior={Prior2}, la secuencia oculta de monedas más probable para el estado observado {GetS(Obs,DictO)} es: \n{GetS(HiddenStates2[M2],DictH)} y su probabilidad es de {np.round(P2[M2],8)}')
+print(f'Suponga el estado observado: {GetS(HiddenStates[M],DictH)}')
+print(f'Vea que para un prior de {Prior}, la secuencia oculta de monedas más probable es: \n{GetS(HiddenStates[M],DictH)} y su probabilidad es de {np.round(P[M],8)}')
+print(f'Pero para un prior distinto, por ejemplo, prior={Prior2}, la secuencia oculta de monedas más probable es: \n{GetS(HiddenStates2[M2],DictH)} y su probabilidad es de {np.round(P2[M2],8)}')
 print(f'Luego los resultados si dependen de la probabilidad a priori.')
+
+
